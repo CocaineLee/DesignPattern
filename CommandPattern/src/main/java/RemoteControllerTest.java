@@ -12,8 +12,12 @@ public class RemoteControllerTest {
 
         remoteController.pressOnBtn(0);
         remoteController.pressOnBtn(1);
+
         remoteController.pressOffBtn(0);
+        remoteController.pressUndoBtn();
+
         remoteController.pressOffBtn(1);
+        remoteController.pressUndoBtn();
     }
 
 }

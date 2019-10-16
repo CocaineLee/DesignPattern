@@ -1,6 +1,7 @@
 public class RemoteController {
     Command[] onCommands;
     Command[] offCommands;
+    Command lastCommand;
 
     public RemoteController() {
         onCommands = new Command[7];
@@ -11,6 +12,7 @@ public class RemoteController {
             onCommands[i] = noCommand;
             offCommands[i] = noCommand;
         }
+        lastCommand = noCommand;
     }
 
     public void setSlot(int slotIndex,Command onCommand,Command offCommand) {
@@ -20,10 +22,16 @@ public class RemoteController {
 
     public void pressOnBtn(int slotIndex) {
         onCommands[slotIndex].execute();
+        lastCommand = onCommands[slotIndex];
     }
 
     public void pressOffBtn(int slotIndex) {
         offCommands[slotIndex].execute();
+        lastCommand = offCommands[slotIndex];
+    }
+
+    public void pressUndoBtn() {
+        lastCommand.undo();
     }
 
 }
